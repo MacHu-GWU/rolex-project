@@ -113,9 +113,6 @@ def test_to_timestamp():
 
 
 def test_from_timestamp():
-    with pytest.raises(Exception) as e:
-        datetime.fromtimestamp(-1)
-
     dt = rolex.from_timestamp(-3600)
     assert rolex.from_timestamp(1) == datetime.fromtimestamp(1)
 
@@ -300,4 +297,4 @@ def test_round_to_specified_time():
 
 if __name__ == "__main__":
     import py
-    py.test.cmdline.main("--tb=native")  # use native python trace back
+    py.test.cmdline.main("--tb=native -s")  # use native python trace back
