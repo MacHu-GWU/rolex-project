@@ -19,11 +19,11 @@ A elegant datetime library.
 **Quick links**:
 
 - `GitHub Homepage <https://github.com/MacHu-GWU/rolex-project>`_
-- `Online Documentation <http://www.wbh-doc.com.s3.amazonaws.com/rolex/index.html>`_
+- `Online Documentation <http://pythonhosted.org/rolex>`_
 - `PyPI download <https://pypi.python.org/pypi/rolex>`_
 - `Install <install_>`_
 - `Issue submit and feature request <https://github.com/MacHu-GWU/rolex-project/issues>`_
-- `API reference and source code <http://www.wbh-doc.com.s3.amazonaws.com/rolex/py-modindex.html>`_
+- `API reference and source code <http://pythonhosted.org/rolex/py-modindex.html>`_
 
 
 .. _install:
