@@ -10,3 +10,4 @@ subpackage and modules
 .. toctree::
    :maxdepth: 1
 
+	template <template>

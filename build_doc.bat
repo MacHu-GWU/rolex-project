@@ -1,6 +1,6 @@
 pushd "%~dp0"
 cd rolex
-python3 zzz_manual_install.py
+python zzz_manual_install.py
 cd ..
-python3 create_doctree.py
+python create_doctree.py
 make html

@@ -12,6 +12,7 @@ from datetime import datetime
 from rolex import rolex
 from dateutil import parser
 
+
 def bench_mark():
     """Test Result:
     
@@ -27,7 +28,7 @@ def bench_mark():
         10000 item, rolex takes 0.214618 sec, dateutil takes 0.977337 sec.
         100000 item, rolex takes 2.018101 sec, dateutil takes 9.645923 sec.
     """
-    tpl = "%Y-%m-%dT%H:%M:%SZ"
+    tpl = "%Y-%m-%dT%H:%M:%S"
      
     for n in [1, 10, 100, 1000, 10000, 100000]:
         data = [datetime.strftime(rolex.rnd_datetime(), tpl) for i in range(n)]
@@ -41,6 +42,7 @@ def bench_mark():
         elapse2 = time.clock() - st
          
         print("%s item, rolex takes %.6f sec, dateutil takes %.6f sec." % (n, elapse1, elapse2))
-        
+
+
 if __name__ == "__main__":
     bench_mark()

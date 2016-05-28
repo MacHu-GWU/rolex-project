@@ -4,7 +4,7 @@ IF ERRORLEVEL==2 goto end
 IF ERRORLEVEL==1 goto upload
 
 :upload
-python3 setup.py sdist upload -r pypi
+python setup.py sdist upload -r pypi
 goto end
 
 :end

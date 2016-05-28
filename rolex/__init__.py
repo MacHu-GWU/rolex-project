@@ -14,8 +14,9 @@ Prerequisites
 - None
 """
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __short_description__ = "An elegant datetime library."
+__license__ = "MIT"
 __author__ = "Sanhe Hu"
 
 import random
@@ -30,9 +31,11 @@ except:
 
 ZERO = timedelta(0)
 
+
 class UTC(tzinfo):
     """UTC
     """
+
     def utcoffset(self, dt):
         return ZERO
 
@@ -190,7 +193,6 @@ class Rolex(object):
         else:
             raise Exception("Unable to parse datetime from %r" % value)
 
-
     #--- Method extension toordinary, timestamp ---
     def to_ordinal(self, date_object):
         """Calculate number of days from 0000-00-00.
@@ -298,7 +300,8 @@ class Rolex(object):
             "seconds", "second", "sec", "s",
             "weeks", "week", "w",
         ]
-        error_message = "'%s' is invalid, use one of %s" % (freq, valid_keywords)
+        error_message = "'%s' is invalid, use one of %s" % (
+            freq, valid_keywords)
 
         try:
             # day
@@ -398,7 +401,8 @@ class Rolex(object):
 
         # if two of start, end, or periods exist
         if (bool(start) + bool(end) + bool(periods)) != 2:
-            raise ValueError("Must specify two of 'start', 'end', or 'periods'.")
+            raise ValueError(
+                "Must specify two of 'start', 'end', or 'periods'.")
 
         if normalize:
             converter = normalize_datetime_to_midnight
@@ -407,11 +411,11 @@ class Rolex(object):
 
         interval = self._freq_parser(freq)
 
-        if (bool(start) & bool(end)): # start and end
+        if (bool(start) & bool(end)):  # start and end
             start = self.parse_datetime(start)
             end = self.parse_datetime(end)
 
-            if start > end: # if start time later than end time, raise error
+            if start > end:  # if start time later than end time, raise error
                 raise ValueError("start time has to be earlier than end time")
 
             start = start - interval
@@ -419,25 +423,25 @@ class Rolex(object):
             while 1:
                 start += interval
                 if start <= end:
-                    series.append( converter(start) )
+                    series.append(converter(start))
                 else:
                     break
 
-        elif (bool(start) & bool(periods)): # start and periods
+        elif (bool(start) & bool(periods)):  # start and periods
             start = self.parse_datetime(start)
 
             start = start - interval
             for _ in range(periods):
                 start += interval
-                series.append( converter(start) )
+                series.append(converter(start))
 
-        elif (bool(end) & bool(periods)): # end and periods
+        elif (bool(end) & bool(periods)):  # end and periods
             end = self.parse_datetime(end)
 
             start = end - interval * periods
             for _ in range(periods):
                 start += interval
-                series.append( converter(start) )
+                series.append(converter(start))
 
         if return_date:
             series = [i.date() for i in series]
@@ -474,7 +478,7 @@ class Rolex(object):
 
         series = list()
         for i in self.time_series(
-            start, end, freq="1day", return_date=return_date):
+                start, end, freq="1day", return_date=return_date):
             if i.isoweekday() in weekday:
                 series.append(i)
 
@@ -583,7 +587,7 @@ class Rolex(object):
         )
 
     def rnd_datetime_array(self,
-            size, start=datetime(1970, 1, 1), end=datetime.now()):
+                           size, start=datetime(1970, 1, 1), end=datetime.now()):
         """Array or Matrix of random datetime generator.
         """
         if isinstance(start, str):
@@ -620,7 +624,7 @@ class Rolex(object):
         返回给定日期N分钟之后的时间。
         """
         a_datetime = self.parse_datetime(datetimestr)
-        return a_datetime + timedelta(seconds=60*n)
+        return a_datetime + timedelta(seconds=60 * n)
 
     def add_hours(self, datetimestr, n):
         """Returns a time that n hours after a time.
@@ -633,7 +637,7 @@ class Rolex(object):
         返回给定日期N小时之后的时间。
         """
         a_datetime = self.parse_datetime(datetimestr)
-        return a_datetime + timedelta(seconds=3600*n)
+        return a_datetime + timedelta(seconds=3600 * n)
 
     def add_days(self, datetimestr, n, return_date=False):
         """Returns a time that n days after a time.
@@ -665,7 +669,7 @@ class Rolex(object):
         返回给定日期N周之后的时间。
         """
         a_datetime = self.parse_datetime(datetimestr)
-        a_datetime += timedelta(days=7*n)
+        a_datetime += timedelta(days=7 * n)
         if return_date:
             return a_datetime.date()
         else:
@@ -694,13 +698,13 @@ class Rolex(object):
         # 尝试直接assign year, month, day
         try:
             a_datetime = datetime(year, month, a_datetime.day,
-                a_datetime.hour, a_datetime.minute,
-                a_datetime.second, a_datetime.microsecond)
+                                  a_datetime.hour, a_datetime.minute,
+                                  a_datetime.second, a_datetime.microsecond)
         # 肯定是由于新的月份的日子不够, 那么直接跳到下一个月的第一天, 再回退一天
         except ValueError:
-            a_datetime = datetime(year, month+1, 1,
-                a_datetime.hour, a_datetime.minute,
-                a_datetime.second, a_datetime.microsecond)
+            a_datetime = datetime(year, month + 1, 1,
+                                  a_datetime.hour, a_datetime.minute,
+                                  a_datetime.second, a_datetime.microsecond)
             a_datetime = self.add_days(a_datetime, -1)
 
         if return_date:
@@ -814,10 +818,10 @@ class Rolex(object):
 
         if month == 12:
             start = datetime(year, month, 1)
-            end = datetime(year+1, 1, 1) - delta
+            end = datetime(year + 1, 1, 1) - delta
         else:
             start = datetime(year, month, 1)
-            end = datetime(year, month+1, 1) - delta
+            end = datetime(year, month + 1, 1) - delta
 
         if not return_string:
             return start, end
@@ -846,7 +850,7 @@ class Rolex(object):
             delta = timedelta(seconds=1)
 
         start = datetime(year, 1, 1)
-        end = datetime(year+1, 1, 1) - delta
+        end = datetime(year + 1, 1, 1) - delta
 
         if not return_string:
             return start, end

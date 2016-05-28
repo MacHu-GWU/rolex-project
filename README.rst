@@ -1,3 +1,11 @@
+.. image:: https://travis-ci.org/MacHu-GWU/rolex-project.svg?branch=master
+
+.. image:: https://img.shields.io/pypi/v/rolex.svg
+
+.. image:: https://img.shields.io/pypi/l/rolex.svg
+
+.. image:: https://img.shields.io/pypi/pyversions/rolex.svg
+
 Welcome to the rolex Documentation
 ==================================
 A elegant datetime library. 
