@@ -2,4 +2,4 @@ template
 ========
 
 .. automodule:: rolex.template
-	:members:
+    :members:

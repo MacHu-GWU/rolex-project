@@ -2,12 +2,13 @@ rolex
 =====
 
 .. automodule:: rolex
-	:members:
+    :members:
 
-subpackage and modules
-----------------------
+sub packages and modules
+------------------------
 
 .. toctree::
    :maxdepth: 1
 
-	template <template>
+    template <template>
+    
