@@ -13,7 +13,7 @@ from rolex import rolex
 from dateutil import parser
 
 
-def test_bench_mark():
+def bench_mark():
     """Test Result:
     
     - rolex is 4 ~ 5 times faster than dateutil.
@@ -47,6 +47,4 @@ def test_bench_mark():
 
 
 if __name__ == "__main__":
-    import py
-    import os
-    py.test.cmdline.main("%s --tb=native -s" % os.path.basename(__file__))
+    bench_mark()
