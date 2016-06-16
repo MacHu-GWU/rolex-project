@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __short_description__ = "An elegant datetime library."
 __license__ = "MIT"
 __author__ = "Sanhe Hu"
 
 import random
 from datetime import datetime, date, timedelta, tzinfo
+
+try:
+    from dateutil import parser
+except ImportError as e:
+    print("Please install python_dateutil!")
 
 try:
     from .six import PY3, string_types, integer_types
@@ -97,8 +102,8 @@ class Rolex(object):
 
         # raise error
         raise Exception("Unable to parse date from: %r" % datestr)
-
-    def str2datetime(self, datetimestr):
+            
+    def _str2datetime(self, datetimestr):
         """Parse datetime from string. If no template matches this string,
         raise Error. Please go
         https://github.com/MacHu-GWU/rolex-project/issues
@@ -134,8 +139,13 @@ class Rolex(object):
                 pass
 
         # raise error
-        raise Exception("Unable to parse datetime from: %r" % datetimestr)
-
+        dt = parser.parse(datetimestr)
+        self.str2datetime = parser.parse
+        
+        return dt
+        
+    str2datetime = _str2datetime
+    
     def parse_date(self, value):
         """A lazy method to parse anything to date.
 

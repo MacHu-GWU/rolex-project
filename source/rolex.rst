@@ -33,7 +33,7 @@ Also works fine with ``date``::
 
 	...
 
-If rolex failed to parse it from string, try `dateutil <https://dateutil.readthedocs.io/en/stable/>`_. **But rolex is 4x times faster** than ``dateutil`` for recognized pattern. If ``rolex`` failed to parse your string, **please submit it to** https://github.com/MacHu-GWU/rolex-project/issues.
+If rolex failed to parse it from string, automatically, it will start using `dateutil <https://dateutil.readthedocs.io/en/stable/>`_, so if rolex can't parse the string, then dateutil also can't. **But rolex's built in method is 4x times faster** than ``dateutil`` for recognized pattern. If ``rolex`` failed to parse your string, **please submit it to** https://github.com/MacHu-GWU/rolex-project/issues.
 
 
 Timestamp
@@ -56,6 +56,8 @@ As simple as this::
 
 	>>> rolex.rnd_date("2015-01-01", "2015-12-31")
 	datetime.date(2015, 5, 14)
+
+	>>> rolex.rnd_date_array(10, "2015-01-01", "2015-12-31") # gives you length-6 date list
 
 	>>> rolex.rnd_date_array((2, 3), "2015-01-01", "2015-12-31") # gives you 2 x 3 date matrix
 

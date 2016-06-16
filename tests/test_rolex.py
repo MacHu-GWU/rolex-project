@@ -38,7 +38,13 @@ def test_str2datetime():
     assert rolex.str2datetime(
         "2014-07-13 8:12:34 PM") == datetime(2014, 7, 13, 20, 12, 34)
     assert rolex.default_datetime_template == "%Y-%m-%d %I:%M:%S %p"
-
+    assert rolex.str2datetime.__name__ == "_str2datetime"
+    
+    # When rolex failed to parse date time string, 
+    # then start using dateutil.parser.parse
+    assert isinstance(rolex.str2datetime("2000-01-01T00:00:00-5"), datetime)
+    assert rolex.str2datetime.__name__ == "parse"
+    
 
 def test_parse_date():
     """parse anything to date.
@@ -297,4 +303,5 @@ def test_round_to_specified_time():
 
 if __name__ == "__main__":
     import py
-    py.test.cmdline.main("--tb=native -s")  # use native python trace back
+    import os
+    py.test.cmdline.main("%s --tb=native -s" % os.path.basename(__file__))

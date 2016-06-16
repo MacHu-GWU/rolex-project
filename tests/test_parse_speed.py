@@ -13,7 +13,7 @@ from rolex import rolex
 from dateutil import parser
 
 
-def bench_mark():
+def test_bench_mark():
     """Test Result:
     
     - rolex is 4 ~ 5 times faster than dateutil.
@@ -26,11 +26,10 @@ def bench_mark():
         100 item, rolex takes 0.002138 sec, dateutil takes 0.009662 sec.
         1000 item, rolex takes 0.021126 sec, dateutil takes 0.097736 sec.
         10000 item, rolex takes 0.214618 sec, dateutil takes 0.977337 sec.
-        100000 item, rolex takes 2.018101 sec, dateutil takes 9.645923 sec.
     """
     tpl = "%Y-%m-%dT%H:%M:%S"
      
-    for n in [1, 10, 100, 1000, 10000, 100000]:
+    for n in [1, 10, 100, 1000, 10000]:
         data = [datetime.strftime(rolex.rnd_datetime(), tpl) for i in range(n)]
      
         st = time.clock()
@@ -43,6 +42,11 @@ def bench_mark():
          
         print("%s item, rolex takes %.6f sec, dateutil takes %.6f sec." % (n, elapse1, elapse2))
 
+        if n >= 10:
+            assert elapse1 < elapse2
+
 
 if __name__ == "__main__":
-    bench_mark()
+    import py
+    import os
+    py.test.cmdline.main("%s --tb=native -s" % os.path.basename(__file__))
