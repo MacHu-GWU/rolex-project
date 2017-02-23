@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 __short_description__ = "An elegant datetime library."
 __license__ = "MIT"
 __author__ = "Sanhe Hu"
@@ -84,6 +84,9 @@ class Rolex(object):
         字符串非常多, 且模式单一时, 只有第一次尝试耗时较多, 之后就非常快了。
         该方法要快过 :meth:`dateutil.parser.parse` 方法。
         """
+        if datestr is None:
+            raise ValueError("Parser must be a string or character stream, not NoneType")
+        
         # try default date template
         try:
             return datetime.strptime(
@@ -122,6 +125,9 @@ class Rolex(object):
         字符串非常多, 且模式单一时, 只有第一次尝试耗时较多, 之后就非常快了。
         该方法要快过 :meth:`dateutil.parser.parse` 方法。
         """
+        if datetimestr is None:
+            raise ValueError("Parser must be a string or character stream, not NoneType")
+            
         # try default datetime template
         try:
             return datetime.strptime(
@@ -156,7 +162,9 @@ class Rolex(object):
         - datetime: use date part
         - date: just return it
         """
-        if isinstance(value, str):
+        if value is None:
+            raise Exception("Unable to parse date from %r" % value)
+        elif isinstance(value, string_types):
             return self.str2date(value)
         elif isinstance(value, int):
             return date.fromordinal(value)
@@ -177,7 +185,9 @@ class Rolex(object):
         - date: use date part and set hour, minute, second to zero
         - datetime: just return it
         """
-        if isinstance(value, str):
+        if value is None:
+            raise Exception("Unable to parse datetime from %r" % value)
+        elif isinstance(value, string_types):
             return self.str2datetime(value)
         elif isinstance(value, integer_types):
             return self.from_utctimestamp(value)
@@ -526,9 +536,9 @@ class Rolex(object):
 
         随机生成一个位于 ``start`` 和 ``end`` 之间的日期。
         """
-        if isinstance(start, str):
+        if isinstance(start, string_types):
             start = self.str2date(start)
-        if isinstance(end, str):
+        if isinstance(end, string_types):
             end = self.str2date(end)
         if start > end:
             raise ValueError("start time has to be earlier than end time")
@@ -538,9 +548,9 @@ class Rolex(object):
     def rnd_date_array(self, size, start=date(1970, 1, 1), end=date.today()):
         """Array or Matrix of random date generator.
         """
-        if isinstance(start, str):
+        if isinstance(start, string_types):
             start = self.str2date(start)
-        if isinstance(end, str):
+        if isinstance(end, string_types):
             end = self.str2date(end)
         if start > end:
             raise ValueError("start time has to be earlier than end time")
@@ -570,7 +580,7 @@ class Rolex(object):
 
         随机生成一个位于 ``start`` 和 ``end`` 之间的时间。
         """
-        if isinstance(start, str):
+        if isinstance(start, string_types):
             start = self.str2datetime(start)
         if isinstance(end, str):
             end = self.str2datetime(end)
@@ -587,7 +597,7 @@ class Rolex(object):
                            size, start=datetime(1970, 1, 1), end=datetime.now()):
         """Array or Matrix of random datetime generator.
         """
-        if isinstance(start, str):
+        if isinstance(start, string_types):
             start = self.str2datetime(start)
         if isinstance(end, str):
             end = self.str2datetime(end)

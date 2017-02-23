@@ -302,6 +302,5 @@ def test_round_to_specified_time():
 
 
 if __name__ == "__main__":
-    import py
     import os
-    py.test.cmdline.main("%s --tb=native -s" % os.path.basename(__file__))
+    pytest.main(["--tb=native", "-s", os.path.basename(__file__)])
