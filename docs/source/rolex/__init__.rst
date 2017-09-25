@@ -10,5 +10,9 @@ sub packages and modules
 .. toctree::
    :maxdepth: 1
 
-    template <template>
+    generator <generator>
+    math <math>
+    parse <parse>
+    tz <tz>
+    util <util>
     
