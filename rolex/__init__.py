@@ -30,5 +30,5 @@ try:
         to_ordinal, from_ordinal, to_utctimestamp, from_utctimestamp,
         to_utc, utc_to_tz, utc_to_local,
     )
-except ImportError:
+except ImportError: # pragma: no cover
     pass
