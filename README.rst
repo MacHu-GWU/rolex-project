@@ -18,7 +18,8 @@
 
 
 Welcome to the ``rolex`` Documentation
-==================================
+==============================================================================
+
 A elegant datetime library.
 
 - 100% Pure Python implementation.
@@ -29,7 +30,7 @@ A elegant datetime library.
 
 
 Quick Links
------------
+------------------------------------------------------------------------------
 
 - .. image:: https://img.shields.io/badge/Link-Document-red.svg
       :target: http://www.wbh-doc.com.s3.amazonaws.com/rolex/index.html
@@ -53,7 +54,7 @@ Quick Links
 .. _install:
 
 Install
--------
+------------------------------------------------------------------------------
 ``rolex`` is released on PyPI, so all you need is:
 
 .. code-block:: console

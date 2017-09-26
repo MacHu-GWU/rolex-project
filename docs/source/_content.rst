@@ -177,7 +177,7 @@ If you got an idea, or have request for more utility method, tell me at here htt
 .. include:: author.rst
 
 API Document
-------------
+------------------------------------------------------------------------------
 
 * :ref:`by Name <genindex>`
 * :ref:`by Structure <modindex>`
