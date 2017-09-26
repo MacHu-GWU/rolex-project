@@ -127,7 +127,8 @@ class Parser(object):
 
     # --- Parse datetime ---
     def str2date(self, date_str):
-        """Parse date from string.
+        """
+        Parse date from string.
 
         If there's no template matches your string, Please go
         https://github.com/MacHu-GWU/rolex-project/issues
@@ -167,7 +168,8 @@ class Parser(object):
         raise ValueError("Unable to parse date from: %r!" % date_str)
 
     def _str2datetime(self, datetime_str):
-        """Parse datetime from string.
+        """
+        Parse datetime from string.
 
         If there's no template matches your string, Please go
         https://github.com/MacHu-GWU/rolex-project/issues
@@ -222,7 +224,8 @@ class Parser(object):
         self.str2datetime = self._str2datetime
 
     def parse_date(self, value):
-        """A lazy method to parse anything to date.
+        """
+        A lazy method to parse anything to date.
 
         If input data type is:
 
@@ -245,7 +248,8 @@ class Parser(object):
             raise ValueError("Unable to parse date from %r" % value)
 
     def parse_datetime(self, value):
-        """A lazy method to parse anything to datetime.
+        """
+        A lazy method to parse anything to datetime.
 
         If input data type is:
 

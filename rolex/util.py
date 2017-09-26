@@ -74,7 +74,6 @@ def from_utctimestamp(timestamp):
 
 def to_utc(a_datetime, keep_utc_tzinfo=False):
     """
-
     Convert a time awared datetime to utc datetime.
 
     :param a_datetime: a timezone awared datetime. (If not, then just returns)
@@ -117,13 +116,13 @@ def utc_to_local(utc_datetime, keep_tzinfo=False):
     return utc_to_tz(utc_datetime, local, keep_tzinfo)
 
 
-def isweekend(d_or_dt):
+def is_weekend(d_or_dt):
     """Check if a datetime is weekend.
     """
     return d_or_dt.isoweekday() in [6, 7]
 
 
-def isweekday(d_or_dt):
+def is_weekday(d_or_dt):
     """Check if a datetime is weekday.
     """
     return d_or_dt.isoweekday() not in [6, 7]

@@ -23,7 +23,8 @@ _valid_freq = [
 
 
 def _freq_parser(freq):  # pragma: no cover
-    """Parse timedelta.
+    """
+    Parse frequency to timedelta.
 
     Valid keywords "days", "day", "d", "hours", "hour", "h",
     "minutes", "minute", "min", "m", "seconds", "second", "sec", "s",
@@ -72,7 +73,9 @@ def _freq_parser(freq):  # pragma: no cover
 def time_series(start=None, end=None,
                 periods=None, freq="1day",
                 normalize=False, return_date=False):
-    """A pure Python implementation of pandas.date_range().
+    """
+    A pure Python implementation of pandas.date_range().
+
     Given 2 of start, end, periods and freq, generate a series of
     datetime object.
 
@@ -249,7 +252,8 @@ def _rnd_date(start, end):
 
 
 def rnd_date(start=date(1970, 1, 1), end=date.today()):
-    """Generate a random date between ``start`` to ``end``.
+    """
+    Generate a random date between ``start`` to ``end``.
 
     :param start: Left bound
     :type start: string or datetime.date, (default date(1970, 1, 1))
@@ -268,7 +272,8 @@ def rnd_date(start=date(1970, 1, 1), end=date.today()):
 
 
 def rnd_date_array(size, start=date(1970, 1, 1), end=date.today()):
-    """Array or Matrix of random date generator.
+    """
+    Array or Matrix of random date generator.
     """
     start = parser.parse_date(start)
     end = parser.parse_date(end)
@@ -277,7 +282,8 @@ def rnd_date_array(size, start=date(1970, 1, 1), end=date.today()):
 
 
 def _rnd_datetime(start, end):
-    """Internal random datetime generator.
+    """
+    Internal random datetime generator.
     """
     return from_utctimestamp(
         random.randint(
@@ -288,7 +294,8 @@ def _rnd_datetime(start, end):
 
 
 def rnd_datetime(start=datetime(1970, 1, 1), end=datetime.now()):
-    """Generate a random datetime between ``start`` to ``end``.
+    """
+    Generate a random datetime between ``start`` to ``end``.
 
     :param start: Left bound
     :type start: string or datetime.datetime, (default datetime(1970, 1, 1))
@@ -316,7 +323,8 @@ def rnd_datetime_array(size, start=datetime(1970, 1, 1), end=datetime.now()):
 
 
 def day_interval(year, month, day, milliseconds=False, return_string=False):
-    """Return a start datetime and end datetime of a day.
+    """
+    Return a start datetime and end datetime of a day.
 
     :param milliseconds: Minimum time resolution.
     :param return_string: If you want string instead of datetime, set True
@@ -345,7 +353,8 @@ def day_interval(year, month, day, milliseconds=False, return_string=False):
 
 
 def month_interval(year, month, milliseconds=False, return_string=False):
-    """Return a start datetime and end datetime of a month.
+    """
+    Return a start datetime and end datetime of a month.
 
     :param milliseconds: Minimum time resolution.
     :param return_string: If you want string instead of datetime, set True
@@ -378,7 +387,8 @@ def month_interval(year, month, milliseconds=False, return_string=False):
 
 
 def year_interval(year, milliseconds=False, return_string=False):
-    """Return a start datetime and end datetime of a year.
+    """
+    Return a start datetime and end datetime of a year.
 
     :param milliseconds: Minimum time resolution.
     :param return_string: If you want string instead of datetime, set True

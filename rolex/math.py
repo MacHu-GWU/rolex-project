@@ -10,7 +10,8 @@ except:  # pragma: no cover
 
 #--- Calculator ---
 def add_seconds(datetime_like_object, n, return_date=False):
-    """Returns a time that n seconds after a time.
+    """
+    Returns a time that n seconds after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of seconds, value can be negative
@@ -28,7 +29,8 @@ def add_seconds(datetime_like_object, n, return_date=False):
 
 
 def add_minutes(datetime_like_object, n, return_date=False):
-    """Returns a time that n minutes after a time.
+    """
+    Returns a time that n minutes after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of minutes, value can be negative
@@ -41,7 +43,8 @@ def add_minutes(datetime_like_object, n, return_date=False):
 
 
 def add_hours(datetime_like_object, n, return_date=False):
-    """Returns a time that n hours after a time.
+    """
+    Returns a time that n hours after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of hours, value can be negative
@@ -54,7 +57,8 @@ def add_hours(datetime_like_object, n, return_date=False):
 
 
 def add_days(datetime_like_object, n, return_date=False):
-    """Returns a time that n days after a time.
+    """
+    Returns a time that n days after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of days, value can be negative
@@ -68,7 +72,8 @@ def add_days(datetime_like_object, n, return_date=False):
 
 
 def add_weeks(datetime_like_object, n, return_date=False):
-    """Returns a time that n weeks after a time.
+    """
+    Returns a time that n weeks after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of weeks, value can be negative
@@ -82,7 +87,8 @@ def add_weeks(datetime_like_object, n, return_date=False):
 
 
 def add_months(datetime_like_object, n, return_date=False):
-    """Returns a time that n months after a time.
+    """
+    Returns a time that n months after a time.
 
     Notice: for example, the date that one month after 2015-01-31 supposed
     to be 2015-02-31. But there's no 31th in Feb, so we fix that value to
@@ -127,7 +133,8 @@ def add_months(datetime_like_object, n, return_date=False):
 
 
 def add_years(datetime_like_object, n, return_date=False):
-    """Returns a time that n years after a time.
+    """
+    Returns a time that n years after a time.
 
     :param datetimestr: a datetime object or a datetime str
     :param n: number of years, value can be negative
@@ -218,7 +225,8 @@ _round_to_options = OrderedDict([
 
 
 def round_to(dt, hour, minute, second, mode="round"):
-    """Round the given datetime to specified hour, minute and second.
+    """
+    Round the given datetime to specified hour, minute and second.
 
     :param mode: 'floor' or 'ceiling'
 

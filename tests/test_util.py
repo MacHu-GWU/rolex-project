@@ -91,12 +91,10 @@ def test_utc_to_tz():
 
 
 def test_is_weekend_weekday():
-    """Test isweekday and isweekend checker method.
-    """
     d = date(2016, 5, 3)
     dt = datetime(2016, 5, 1, 8, 30)
-    assert util.isweekday(d) is True
-    assert util.isweekend(dt) is True
+    assert util.is_weekday(d) is True
+    assert util.is_weekend(dt) is True
 
 
 if __name__ == "__main__":
