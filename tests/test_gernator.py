@@ -1,6 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import time
 import pytest
 from pytest import raises
 from rolex import generator
@@ -116,6 +116,30 @@ def test_rnd_datetime_array():
     matrix = generator.rnd_datetime_array((2, 3), start, end)
     assert len(matrix) == 2
     assert len(matrix[0]) == 3
+
+
+def test_rnd_():
+    size = 10000
+
+    st = time.clock()
+    generator.rnd_date_array(size)
+    elapse1 = time.clock() - st
+
+    st = time.clock()
+    generator.rnd_date_list_high_performance(size)
+    elapse2 = time.clock() - st
+
+    assert elapse2 < elapse1
+
+    st = time.clock()
+    generator.rnd_datetime_array(size)
+    elapse1 = time.clock() - st
+
+    st = time.clock()
+    generator.rnd_datetime_list_high_performance(size)
+    elapse2 = time.clock() - st
+
+    assert elapse2 < elapse1
 
 
 def test_day_month_year_interval():

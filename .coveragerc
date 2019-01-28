@@ -3,7 +3,8 @@
 [run]
 omit =
     rolex/pkg/*
-    rolex/zzz_ezinstall.py
+    rolex/docs/*
+    rolex/tests/*
 
 [report]
 # Regexes for lines to exclude from consideration

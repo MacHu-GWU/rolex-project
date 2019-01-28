@@ -1,6 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from collections import OrderedDict
 from datetime import datetime, timedelta
 try:
     from .parse import parser
@@ -8,7 +8,7 @@ except:  # pragma: no cover
     from rolex.parse import parser
 
 
-#--- Calculator ---
+# --- Calculator ---
 def add_seconds(datetime_like_object, n, return_date=False):
     """
     Returns a time that n seconds after a time.
@@ -214,8 +214,6 @@ def _round_to(dt, hour, minute, second):
     else:
         return before
 
-
-from collections import OrderedDict
 
 _round_to_options = OrderedDict([
     ("floor", _floor_to),

@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 __short_description__ = "An elegant datetime library."
 __license__ = "MIT"
 __author__ = "Sanhe Hu"
@@ -30,5 +29,5 @@ try:
         to_ordinal, from_ordinal, to_utctimestamp, from_utctimestamp,
         to_utc, utc_to_tz, utc_to_local,
     )
-except ImportError: # pragma: no cover
+except ImportError:  # pragma: no cover
     pass

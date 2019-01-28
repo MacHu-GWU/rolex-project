@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
 import pytest
-from pytest import raises, approx
+from pytest import raises
 
 from datetime import date, datetime
 from dateutil.parser import parse
@@ -73,7 +72,7 @@ class TestParser(object):
         tpl = random.choice(tested_datetime_template_list)
         print("datetime format is: %r" % tpl)
         for n in [10 ** n for n in range(2, 3 + 1)]:
-            data = [datetime.strftime(datetime.now(), tpl) \
+            data = [datetime.strftime(datetime.now(), tpl)
                     for _ in range(n)]
 
             st = time.clock()
@@ -111,7 +110,8 @@ class TestParser(object):
         with raises(TypeError):
             parser.parse_datetime(None)
         assert parser.parse_datetime(1) == datetime(1970, 1, 1, 0, 0, 1)
-        assert parser.parse_datetime(-1.0) == datetime(1969, 12, 31, 23, 59, 59)
+        assert parser.parse_datetime(-1.0) == datetime(1969,
+                                                       12, 31, 23, 59, 59)
         assert parser.parse_datetime(
             datetime(2000, 1, 1, 8, 30, 0)) == datetime(2000, 1, 1, 8, 30, 0)
         assert parser.parse_datetime(date(2000, 1, 1)) == datetime(2000, 1, 1)

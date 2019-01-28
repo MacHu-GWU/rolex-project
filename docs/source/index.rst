@@ -1,6 +1,8 @@
-.. contents::
+Release v\ |release| (:ref:`What's new? <release_history>`).
+
 
 .. include:: ../../README.rst
+
 
 Usage
 ------------------------------------------------------------------------------
@@ -174,7 +176,9 @@ You man have this demands while playing with SQL database. select data within on
 
 If you got an idea, or have request for more utility method, tell me at here https://github.com/MacHu-GWU/rolex-project/issues
 
-.. include:: author.rst
+
+.. include:: ../../AUTHORS.rst
+
 
 API Document
 ------------------------------------------------------------------------------

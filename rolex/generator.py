@@ -1,17 +1,21 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import random
 from datetime import date, datetime, timedelta
 
-try:
-    from .pkg.sixmini import integer_types, string_types
-    from .parse import parser
-    from .util import from_utctimestamp, to_utctimestamp
+try:  # pragma: no cover
+    import numpy as np
+
+    has_np = True
 except:  # pragma: no cover
-    from rolex.pkg.sixmini import integer_types, string_types
-    from rolex.parse import parser
-    from rolex.util import from_utctimestamp, to_utctimestamp
+    has_np = False
+
+from .pkg.sixmini import integer_types, string_types
+from .parse import parser
+from .util import (
+    from_utctimestamp, to_utctimestamp,
+    from_ordinal, to_ordinal,
+)
 
 _valid_freq = [
     "days", "day", "d",
@@ -203,6 +207,7 @@ def weekday_series(start, end, weekday, return_date=False):
         ]
 
     :param weekday: int or list of int
+    :returns: list of datetime
 
     **中文文档**
 
@@ -228,13 +233,13 @@ def _randn(size, rnd_generator, *args, **kwargs):
     if isinstance(size, integer_types):
         if size < 0:
             raise ValueError("'size' can't smaller than zero")
-        return [rnd_generator(*args) for _ in range(size)]
+        return [rnd_generator(*args, **kwargs) for _ in range(size)]
     else:
         try:
             m, n = size[0], size[1]
             if ((m < 0) or (n < 0)):
                 raise ValueError("'size' can't smaller than zero")
-            return [[rnd_generator(*args) for _ in range(n)] for _ in range(m)]
+            return [[rnd_generator(*args, **kwargs) for _ in range(n)] for _ in range(m)]
         except:
             raise ValueError("'size' has to be int or tuple. "
                              "e.g. 6 or (2, 3)")
@@ -251,7 +256,7 @@ def _rnd_date(start, end):
     return date.fromordinal(random.randint(start.toordinal(), end.toordinal()))
 
 
-def rnd_date(start=date(1970, 1, 1), end=date.today()):
+def rnd_date(start=date(1970, 1, 1), end=None, **kwargs):
     """
     Generate a random date between ``start`` to ``end``.
 
@@ -265,20 +270,53 @@ def rnd_date(start=date(1970, 1, 1), end=date.today()):
 
     随机生成一个位于 ``start`` 和 ``end`` 之间的日期。
     """
+    if end is None:
+        end = date.today()
     start = parser.parse_date(start)
     end = parser.parse_date(end)
     _assert_correct_start_end(start, end)
     return _rnd_date(start, end)
 
 
-def rnd_date_array(size, start=date(1970, 1, 1), end=date.today()):
+def rnd_date_array(size, start=date(1970, 1, 1), end=None, **kwargs):
     """
     Array or Matrix of random date generator.
+
+    :returns: 1d or 2d array of datetime.date
     """
+    if end is None:
+        end = date.today()
     start = parser.parse_date(start)
     end = parser.parse_date(end)
     _assert_correct_start_end(start, end)
     return _randn(size, _rnd_date, start, end)
+
+
+def rnd_date_list_high_performance(size, start=date(1970, 1, 1), end=None, **kwargs):
+    """
+    Generate mass random date.
+
+    :param size: int, number of
+    :param start: date similar object, int / str / date / datetime
+    :param end: date similar object, int / str / date / datetime, default today's date
+    :param kwargs: args placeholder
+    :return: list of datetime.date
+    """
+    if end is None:
+        end = date.today()
+    start_days = to_ordinal(parser.parse_datetime(start))
+    end_days = to_ordinal(parser.parse_datetime(end))
+    _assert_correct_start_end(start_days, end_days)
+    if has_np:  # pragma: no cover
+        return [
+            from_ordinal(days)
+            for days in np.random.randint(start_days, end_days, size)
+        ]
+    else:
+        return [
+            from_ordinal(random.randint(start_days, end_days))
+            for _ in range(size)
+        ]
 
 
 def _rnd_datetime(start, end):
@@ -313,13 +351,37 @@ def rnd_datetime(start=datetime(1970, 1, 1), end=datetime.now()):
     return _rnd_datetime(start, end)
 
 
-def rnd_datetime_array(size, start=datetime(1970, 1, 1), end=datetime.now()):
-    """Array or Matrix of random datetime generator.
+def rnd_datetime_array(size, start=datetime(1970, 1, 1), end=None):
     """
+    Array or Matrix of random datetime generator.
+
+    :returns: 1d or 2d array of datetime.date
+    """
+    if end is None:
+        end = datetime.now()
     start = parser.parse_datetime(start)
     end = parser.parse_datetime(end)
     _assert_correct_start_end(start, end)
     return _randn(size, _rnd_datetime, start, end)
+
+
+def rnd_datetime_list_high_performance(size, start=datetime(1970, 1, 1), end=None):
+    if end is None:
+        end = datetime.now()
+    start_ts = to_utctimestamp(parser.parse_datetime(start))
+    end_ts = to_utctimestamp(parser.parse_datetime(end))
+    _assert_correct_start_end(start, end)
+    interval_range = end_ts - start_ts
+    if has_np:  # pragma: no cover
+        return [
+            from_utctimestamp(v * interval_range + start_ts)
+            for v in np.random.random(size)
+        ]
+    else:
+        return [
+            from_utctimestamp(random.random() * interval_range + start_ts)
+            for _ in range(size)
+        ]
 
 
 def day_interval(year, month, day, milliseconds=False, return_string=False):
@@ -338,7 +400,7 @@ def day_interval(year, month, day, milliseconds=False, return_string=False):
         >>> end
         datetime(2014, 6, 17, 23, 59, 59)
     """
-    if milliseconds: # pragma: no cover
+    if milliseconds:  # pragma: no cover
         delta = timedelta(milliseconds=1)
     else:
         delta = timedelta(seconds=1)
@@ -368,7 +430,7 @@ def month_interval(year, month, milliseconds=False, return_string=False):
         >>> end
         datetime(2000, 2, 29, 23, 59, 59)
     """
-    if milliseconds: # pragma: no cover
+    if milliseconds:  # pragma: no cover
         delta = timedelta(milliseconds=1)
     else:
         delta = timedelta(seconds=1)

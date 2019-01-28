@@ -1,3 +1,8 @@
+
+.. image:: https://readthedocs.org/projects/rolex/badge/?version=latest
+    :target: https://rolex.readthedocs.io/?badge=latest
+    :alt: Documentation Status
+
 .. image:: https://travis-ci.org/MacHu-GWU/rolex-project.svg?branch=master
     :target: https://travis-ci.org/MacHu-GWU/rolex-project?branch=master
 
@@ -13,8 +18,35 @@
 .. image:: https://img.shields.io/pypi/pyversions/rolex.svg
     :target: https://pypi.python.org/pypi/rolex
 
-.. image:: https://img.shields.io/badge/Star_Me_on_GitHub!--None.svg?style=social
+.. image:: https://img.shields.io/badge/STAR_Me_on_GitHub!--None.svg?style=social
     :target: https://github.com/MacHu-GWU/rolex-project
+
+------
+
+
+.. image:: https://img.shields.io/badge/Link-Document-blue.svg
+      :target: https://rolex.readthedocs.io/index.html
+
+.. image:: https://img.shields.io/badge/Link-API-blue.svg
+      :target: https://rolex.readthedocs.io/py-modindex.html
+
+.. image:: https://img.shields.io/badge/Link-Source_Code-blue.svg
+      :target: https://rolex.readthedocs.io/py-modindex.html
+
+.. image:: https://img.shields.io/badge/Link-Install-blue.svg
+      :target: `install`_
+
+.. image:: https://img.shields.io/badge/Link-GitHub-blue.svg
+      :target: https://github.com/MacHu-GWU/rolex-project
+
+.. image:: https://img.shields.io/badge/Link-Submit_Issue-blue.svg
+      :target: https://github.com/MacHu-GWU/rolex-project/issues
+
+.. image:: https://img.shields.io/badge/Link-Request_Feature-blue.svg
+      :target: https://github.com/MacHu-GWU/rolex-project/issues
+
+.. image:: https://img.shields.io/badge/Link-Download-blue.svg
+      :target: https://pypi.org/pypi/rolex#files
 
 
 Welcome to the ``rolex`` Documentation
@@ -29,28 +61,6 @@ A elegant datetime library.
 - Relative time calculation (add seconds, hour, week, month, year ...).
 
 
-Quick Links
-------------------------------------------------------------------------------
-
-- .. image:: https://img.shields.io/badge/Link-Document-red.svg
-      :target: http://www.wbh-doc.com.s3.amazonaws.com/rolex/index.html
-
-- .. image:: https://img.shields.io/badge/Link-API_Reference_and_Source_Code-red.svg
-      :target: API reference and source code <http://www.wbh-doc.com.s3.amazonaws.com/rolex/py-modindex.html
-
-- .. image:: https://img.shields.io/badge/Link-Install-red.svg
-      :target: `install`_
-
-- .. image:: https://img.shields.io/badge/Link-GitHub-blue.svg
-      :target: https://github.com/MacHu-GWU/rolex-project
-
-- .. image:: https://img.shields.io/badge/Link-Submit_Issue_and_Feature_Request-blue.svg
-      :target: https://github.com/MacHu-GWU/rolex-project/issues
-
-- .. image:: https://img.shields.io/badge/Link-Download-blue.svg
-      :target: https://pypi.python.org/pypi/rolex#downloads
-
-
 .. _install:
 
 Install
@@ -59,10 +69,10 @@ Install
 
 .. code-block:: console
 
-	$ pip install rolex
+    $ pip install rolex
 
 To upgrade to latest version:
 
 .. code-block:: console
 
-	$ pip install --upgrade rolex
+    $ pip install --upgrade rolex
