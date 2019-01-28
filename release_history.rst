@@ -1,7 +1,7 @@
 Release and Version History
 ===========================
 
-0.0.4 (TODO)
+0.0.9 (TODO)
 ~~~~~~~~~~~~~~~~~~
 **Features and Improvements**
 
@@ -10,6 +10,24 @@ Release and Version History
 **Bugfixes**
 
 **Miscellaneous**
+
+
+0.0.8 (2019-01-28)
+~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- introduce a new high performance ``rolex.rnd_datetime_list_high_performance(size, start, end)`` function.
+
+**Miscellaneous**
+
+- use pygitrepo==0.0.27 project skeleton
+
+
+0.0.7 (2017-09-28)
+~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+A lots of API change.
 
 
 0.0.3 (2016-06-16)
