@@ -60,6 +60,8 @@ A elegant datetime library.
 - Easy to use high performance time series/random datetime, date generator.
 - Relative time calculation (add seconds, hour, week, month, year ...).
 
+.. contents::
+
 
 .. _install:
 
