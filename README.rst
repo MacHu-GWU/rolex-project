@@ -57,7 +57,7 @@ A elegant datetime library.
 - 100% Pure Python implementation.
 - Faster datetime/date parser than ``dateutil.parser.parse``.
 - Powerful parser convert other type to datetime/date.
-- Easy to use time series/random datetime, date generator.
+- Easy to use high performance time series/random datetime, date generator.
 - Relative time calculation (add seconds, hour, week, month, year ...).
 
 
